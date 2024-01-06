@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Usage
+
+After run the application in the browser you must set values for to from and amount fields and then click convert button to see the current result.
+For watch the history convertions press on histort.
+The application is responsive.
+
