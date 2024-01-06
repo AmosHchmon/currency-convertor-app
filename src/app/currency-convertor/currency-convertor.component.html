@@ -1,0 +1,37 @@
+<form [formGroup]="convertForm">
+  <div class="d-flex justify-content-around flex-md-row flex-sm-column px-sm-5">
+    <mat-form-field>
+      <mat-label>Amount</mat-label>
+      <input matInput name="amount" [(ngModel)]="model.amount" formControlName="amount">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>From Currency</mat-label>
+      <mat-select name="from" [(ngModel)]="model.from" formControlName="from">
+        <mat-option *ngFor="let item of currenciesList" [value]="item.code">{{item.code}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>To Currency</mat-label>
+      <mat-select name="to" [(ngModel)]="model.to" formControlName="to">
+        <mat-option *ngFor="let item of currenciesList" [value]="item.code">{{item.code}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="d-flex justify-content-center my-3">
+    <button type="submit" mat-raised-button color="primary" (click)="onConvertCurrency()">Convert<mat-icon>
+        currency_exchange</mat-icon>
+    </button>
+    <button type="submit" class="ms-3" mat-raised-button color="primary" (click)="onShowHistory()">History<mat-icon>
+        history</mat-icon></button>
+  </div>
+</form>
+
+<h3 class="d-flex justify-content-center">Current Result</h3>
+<div class="result d-flex justify-content-center my-3" *ngIf="convertForm.valid && response">
+  <span>{{model.amount}} {{model.from}}</span> = <span>{{response?.result}} {{model.to}}</span>
+</div>
+<hr>
+<h3 class="d-flex justify-content-center">History Results</h3>
+<div class="result d-flex justify-content-center my-3" *ngFor="let item of historyList">
+  <span>{{item.amount}} {{item.from}}</span> = <span>{{item.result}} {{item.to}}</span>
+</div>
